@@ -1,0 +1,272 @@
+[
+    {
+        "id": "q1",
+        "content": "Który język skryptowy ogólnego przeznaczenia należy wykorzystać do tworzenia aplikacji WWW, zagnieżdżanych w języku HTML i uruchamianych po stronie serwera?",
+        "image": null,
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "C#",
+                "correct": false
+            },
+            {
+                "id": "ans2",
+                "content": "Perl",
+                "correct": false
+            },
+            {
+                "id": "ans3",
+                "content": "PHP",
+                "correct": true
+            },
+            {
+                "id": "ans4",
+                "content": "JavaScript",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "id": "q2",
+        "content": "Który z odsyłaczy posiada poprawną konstrukcję?",
+        "image": null,
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "<a href='mailto:adres'> tekst </a>",
+                "correct": false
+            },
+            {
+                "id": "ans2",
+                "content": "<a href='http://adres'> tekst </a>",
+                "correct": false
+            },
+            {
+                "id": "ans3",
+                "content": "<a href=\"http://adres\"> tekst <a>",
+                "correct": false
+            },
+            {
+                "id": "ans4",
+                "content": "<a href=\"mailto:adres\"> tekst </a>",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "id": "q3",
+        "content": "W palecie kolorów RGB kolor żółty jest połączeniem dwóch kolorów: zielonego i czerwonego. Który z kodów szesnastkowych oznacza kolor żółty?",
+        "image": null,
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "#FF00FF",
+                "correct": false
+            },
+            {
+                "id": "ans2",
+                "content": "#00FFFF",
+                "correct": false
+            },
+            {
+                "id": "ans3",
+                "content": "#FFFF00",
+                "correct": true
+            },
+            {
+                "id": "ans4",
+                "content": "#F0F0F0",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "id": "q4",
+        "content": "Proces walidacji strony internetowej to",
+        "image": null,
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "zespół działań mających na celu zwiększenie oglądalności",
+                "correct": false
+            },
+            {
+                "id": "ans2",
+                "content": "sprawdzenie jej w celu wyeliminowania błędów",
+                "correct": true
+            },
+            {
+                "id": "ans3",
+                "content": "publikowanie w sieci",
+                "correct": false
+            },
+            {
+                "id": "ans4",
+                "content": "promocja strony",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "id": "q5",
+        "content": "Które oprogramowanie NIE JEST systemem zarządzania treścią (CMS)?",
+        "image": null,
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "Joomla",
+                "correct": false
+            },
+            {
+                "id": "ans2",
+                "content": "Apache",
+                "correct": true
+            },
+            {
+                "id": "ans3",
+                "content": "Mambo",
+                "correct": false
+            },
+            {
+                "id": "ans4",
+                "content": "WordPress",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "id": "q6",
+        "content": "Który z formatów zapewnia największa redukcję rozmiaru pliku dźwiękowego?",
+        "image": null,
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "WAV",
+                "correct": false
+            },
+            {
+                "id": "ans2",
+                "content": "PCM",
+                "correct": false
+            },
+            {
+                "id": "ans3",
+                "content": "MP3",
+                "correct": true
+            },
+            {
+                "id": "ans4",
+                "content": "CD-Audio",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "id": "q7",
+        "content": "Funkcja zapisana językiem PHP służy do",
+        "image": "./images/q7.jpg",
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "połączenia z bazą danych",
+                "correct": false
+            },
+            {
+                "id": "ans2",
+                "content": "ustawienia hasła do bazy danych",
+                "correct": false
+            },
+            {
+                "id": "ans3",
+                "content": "zabezpieczenia bazy danych",
+                "correct": false
+            },
+            {
+                "id": "ans4",
+                "content": "pobrania danych z bazy danych",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "id": "q8",
+        "content": "Którego ze słów kluczowych języka SQL należy użyć, aby wyeliminować duplikaty?",
+        "image": null,
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "LIKE",
+                "correct": false
+            },
+            {
+                "id": "ans2",
+                "content": "DISTINCT",
+                "correct": true
+            },
+            {
+                "id": "ans3",
+                "content": "ORDER BY",
+                "correct": false
+            },
+            {
+                "id": "ans4",
+                "content": "GROUP BY",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "id": "q9",
+        "content": "W języku JavaScript, aby wydzielić fragment napisu znajdujący się pomiędzy wskazanymi przez parametr indeksami należy użyć metody",
+        "image": null,
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "slice()",
+                "correct": true
+            },
+            {
+                "id": "ans2",
+                "content": "replace()",
+                "correct": false
+            },
+            {
+                "id": "ans3",
+                "content": "trim()",
+                "correct": false
+            },
+            {
+                "id": "ans4",
+                "content": "concat()",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "id": "q10",
+        "content": "Kolor 255 12 12 w modelu RGB na stronie www powinien być zapisany w postaci",
+        "image": null,
+        "answers": [
+            {
+                "id": "ans1",
+                "content": "#2551212",
+                "correct": false
+            },
+            {
+                "id": "ans2",
+                "content": "#EE0C0C",
+                "correct": false
+            },
+            {
+                "id": "ans3",
+                "content": "#AB1A1D",
+                "correct": false
+            },
+            {
+                "id": "ans4",
+                "content": "#FF0C0C",
+                "correct": true
+            }
+        ]
+    }
+]
