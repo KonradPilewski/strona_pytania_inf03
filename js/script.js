@@ -9,12 +9,14 @@ async function fetchJSON(_file){
 }
 
 function handleFetchError(_err_msg){
-    const question_field = document.querySelector('main');
-    question_field.style.textAlign = 'center';
-    const err_field = document.createElement('h3');
-    err_field.classList.add('errorMessage');
-    err_field.appendChild(document.createTextNode(_err_msg));
-    question_field.appendChild(err_field);
+    const err_field = document.createElement('section');
+    err_field.classList.add('errorContainer');
+
+    const err_header = document.createElement("p");
+    err_header.appendChild(document.createTextNode(_err_msg));
+
+    err_field.appendChild(err_header);
+    document.querySelector('main').prepend(err_field);
 }
 
 function generateQuestion(_question){
