@@ -90,8 +90,8 @@ function answerHandler(ev){
     }
 }
 
-fetchJSON('./json/questions.json').then(questions => {
-    questions.forEach(question => {
+fetchJSON('./json/questions.json').then(_JSON => {
+    _JSON['questions'].forEach(question => {
         generateQuestion(question);
     });
 })
