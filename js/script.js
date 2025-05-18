@@ -20,9 +20,6 @@ function handleFetchError(_err_msg){
 }
 
 function generateQuestion(_question){
-    // main container
-    const question_field = document.querySelector('main');
-
     // question container
     const question_container = document.createElement('section');
     question_container.id = _question['id'];
@@ -62,7 +59,7 @@ function generateQuestion(_question){
     question_container.appendChild(ans_con);
 
     // question_container -> main_container
-    question_field.appendChild(question_container);
+    document.querySelector('main').appendChild(question_container);
 }
 
 function answerHandler(ev){
