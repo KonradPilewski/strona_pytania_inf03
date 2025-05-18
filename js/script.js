@@ -2,41 +2,38 @@ async function fetchJSON(_file){
     try {
         const res = await fetch(_file);
         if(!res.ok) throw new Error(`Couldn't fetch the file. Error ${res.status}`);
-        const data = await res.json();
-        return data;
+        return await res.json();
     } catch (err){
-        handleFetchError(err.message)
+        handleFetchError(err);
     }
 }
 
 function handleFetchError(_err_msg){
-    const question_field = document.querySelector('main');
-    question_field.style.textAlign = 'center';
-    const err_field = document.createElement('h3');
-    err_field.classList.add('errorMessage');
-    err_field.appendChild(document.createTextNode(_err_msg));
-    question_field.appendChild(err_field);
+    const err_field = document.createElement('section');
+    err_field.classList.add('errorContainer');
+
+    const err_header = document.createElement("p");
+    err_header.appendChild(document.createTextNode(_err_msg));
+
+    err_field.appendChild(err_header);
+    document.querySelector('main').prepend(err_field);
 }
 
 function generateQuestion(_question){
-    // main container
-    const question_field = document.querySelector('main');
-
     // question container
     const question_container = document.createElement('section');
-    question_container.id = _question['id'];
     question_container.classList.add('questionContainer');
 
-    // title_container
-    const title_container = document.createElement('section');
-    title_container.classList.add('titleContainer');
+    // question_header
+    const question_header = document.createElement('section');
+    question_header.classList.add('questionHeaderContainer');
     // question_text
     const question_text = document.createElement('h2');
     question_text.appendChild(document.createTextNode(_question['content']))
-    // question_text -> title_container
-    title_container.appendChild(question_text);
-    // title_container -> question_container
-    question_container.appendChild(title_container);
+    // question_text -> question_header
+    question_header.appendChild(question_text);
+    // question_header -> question_container
+    question_container.appendChild(question_header);
 
     // question_image (if exists) -> question container
     if(_question['image'] != null){
@@ -53,47 +50,48 @@ function generateQuestion(_question){
         const ans_btn = document.createElement('button');
         ans_btn.classList.add('answerButton');
         ans_btn.classList.add('ansDefault');
-        ans_btn.id = answer['id'];
-        ans_btn.textContent = answer['content'];
+        ans_btn.textContent = answer['value'];
         ans_btn.addEventListener('click', answerHandler, true);
         ans_con.appendChild(ans_btn);
     });
     question_container.appendChild(ans_con);
 
     // question_container -> main_container
-    question_field.appendChild(question_container);
+    document.querySelector('main').appendChild(question_container);
 }
 
 function answerHandler(ev){
     if(ev.type == 'click' && !ev.target.disabled){
-        let answers = Array();
-        fetchJSON('./json/questions.json').then(questions => {
-            questions.forEach(question => {
-                if(question['id'] == ev.target.parentElement.parentElement.id){
-                    question['answers'].forEach(answer => {
-                        answers.push(answer['correct']);
-                    });
+        const question_container_index = Array.prototype.indexOf.call(document.querySelector("main").children, ev.target.parentElement.parentElement);
+        const isCorrect = Array();
+        
+        fetchJSON('./json/questions.json').then(_JSON => {
+            const current_answer_index = Array.prototype.indexOf.call(ev.target.parentElement.children, ev.target);
+            const current_question = _JSON['questions'][question_container_index];
+            
+            current_question['answers'].forEach(_ans => {
+                isCorrect.push(_ans['correct']);
+            });
 
-                    question['answers'].forEach(answer => {
-                        if(answer['id'] == ev.target.id){
-                            Array.from(ev.target.parentElement.childNodes).forEach(_ans => {
-                                _ans.classList.replace('ansDefault', 'ansDisabled');
-                                _ans.disabled = true;
-                            });
-                            if(!answer['correct']){
-                                ev.target.classList.replace('ansDisabled', 'ansFalse');
-                            }
-                        }
-                    })
-                    Array.from(ev.target.parentElement.childNodes)[answers.findIndex(x => x == true)].classList.replace('ansDisabled', 'ansTrue');
+            const current_answer = current_question['answers'][current_answer_index];
+
+            Array.from(ev.target.parentElement.children).forEach((_ans, i) => {
+                if(isCorrect[i]){
+                    _ans.classList.replace('ansDefault', 'ansTrue');
                 }
-            })
-        })
+                _ans.classList.replace('ansDefault', 'ansDisabled');
+                _ans.disabled = true;
+            });
+
+            if(!current_answer['correct']){
+                ev.target.classList.replace('ansDisabled', 'ansFalse');
+            }
+        });
     }
 }
 
-fetchJSON('./json/questions.json').then(questions => {
-    questions.forEach(question => {
+fetchJSON('./json/questions.json').then(_JSON => {
+    _JSON['questions'].forEach(question => {
         generateQuestion(question);
     });
 })
