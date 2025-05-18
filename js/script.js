@@ -2,8 +2,7 @@ async function fetchJSON(_file){
     try {
         const res = await fetch(_file);
         if(!res.ok) throw new Error(`Couldn't fetch the file. Error ${res.status}`);
-        const data = await res.json();
-        return data;
+        return await res.json();
     } catch (err){
         handleFetchError(err.message)
     }
