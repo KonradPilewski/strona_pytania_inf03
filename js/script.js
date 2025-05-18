@@ -28,16 +28,16 @@ function generateQuestion(_question){
     question_container.id = _question['id'];
     question_container.classList.add('questionContainer');
 
-    // title_container
-    const title_container = document.createElement('section');
-    title_container.classList.add('titleContainer');
+    // question_header
+    const question_header = document.createElement('section');
+    question_header.classList.add('questionHeaderContainer');
     // question_text
     const question_text = document.createElement('h2');
     question_text.appendChild(document.createTextNode(_question['content']))
-    // question_text -> title_container
-    title_container.appendChild(question_text);
-    // title_container -> question_container
-    question_container.appendChild(title_container);
+    // question_text -> question_header
+    question_header.appendChild(question_text);
+    // question_header -> question_container
+    question_container.appendChild(question_header);
 
     // question_image (if exists) -> question container
     if(_question['image'] != null){
