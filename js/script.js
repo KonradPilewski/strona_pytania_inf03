@@ -62,29 +62,31 @@ function generateQuestion(_question){
 
 function answerHandler(ev){
     if(ev.type == 'click' && !ev.target.disabled){
-        let answers = Array();
-        fetchJSON('./json/questions.json').then(questions => {
-            questions.forEach(question => {
-                if(question['id'] == ev.target.parentElement.parentElement.id){
-                    question['answers'].forEach(answer => {
-                        answers.push(answer['correct']);
-                    });
+        const question_container_index = Array.prototype.indexOf.call(document.querySelector("main").children, ev.target.parentElement.parentElement);
+        const isCorrect = Array();
+        
+        fetchJSON('./json/questions.json').then(_JSON => {
+            const current_answer_index = Array.prototype.indexOf.call(ev.target.parentElement.children, ev.target);
+            const current_question = _JSON['questions'][question_container_index];
+            
+            current_question['answers'].forEach(_ans => {
+                isCorrect.push(_ans['correct']);
+            });
 
-                    question['answers'].forEach(answer => {
-                        if(answer['id'] == ev.target.id){
-                            Array.from(ev.target.parentElement.childNodes).forEach(_ans => {
-                                _ans.classList.replace('ansDefault', 'ansDisabled');
-                                _ans.disabled = true;
-                            });
-                            if(!answer['correct']){
-                                ev.target.classList.replace('ansDisabled', 'ansFalse');
-                            }
-                        }
-                    })
-                    Array.from(ev.target.parentElement.childNodes)[answers.findIndex(x => x == true)].classList.replace('ansDisabled', 'ansTrue');
+            const current_answer = current_question['answers'][current_answer_index];
+
+            Array.from(ev.target.parentElement.children).forEach((_ans, i) => {
+                if(isCorrect[i]){
+                    _ans.classList.replace('ansDefault', 'ansTrue');
                 }
-            })
-        })
+                _ans.classList.replace('ansDefault', 'ansDisabled');
+                _ans.disabled = true;
+            });
+
+            if(!current_answer['correct']){
+                ev.target.classList.replace('ansDisabled', 'ansFalse');
+            }
+        });
     }
 }
 
