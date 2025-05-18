@@ -5,6 +5,7 @@
     color: var(--ctp-frappe-text);
     font-family: 'Comfortaa';
     font-weight: 300;
+    box-sizing: border-box;
 }
 
 body {
