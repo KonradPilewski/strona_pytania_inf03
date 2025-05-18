@@ -22,7 +22,6 @@ function handleFetchError(_err_msg){
 function generateQuestion(_question){
     // question container
     const question_container = document.createElement('section');
-    question_container.id = _question['id'];
     question_container.classList.add('questionContainer');
 
     // question_header
@@ -51,8 +50,7 @@ function generateQuestion(_question){
         const ans_btn = document.createElement('button');
         ans_btn.classList.add('answerButton');
         ans_btn.classList.add('ansDefault');
-        ans_btn.id = answer['id'];
-        ans_btn.textContent = answer['content'];
+        ans_btn.textContent = answer['value'];
         ans_btn.addEventListener('click', answerHandler, true);
         ans_con.appendChild(ans_btn);
     });
