@@ -28,7 +28,7 @@ function generateQuestion(_question){
     const question_header = document.createElement('section');
     question_header.classList.add('questionHeaderContainer');
     // question_text
-    const question_text = document.createElement('h2');
+    const question_text = document.createElement('h3');
     question_text.appendChild(document.createTextNode(_question['content']))
     // question_text -> question_header
     question_header.appendChild(question_text);
